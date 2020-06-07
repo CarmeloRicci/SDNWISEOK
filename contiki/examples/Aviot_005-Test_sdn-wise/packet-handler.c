@@ -279,7 +279,6 @@ const void* conf_ptr[RULE_TTL+1] =
    
     if (my_position < path_len-1)
     { 
-      printf("siamo qua!!!!!!\n");
       uint8_t next = my_index + ADDRESS_LENGTH;
       uint8_t last = end - ADDRESS_LENGTH;
       entry_t* e = create_entry();
@@ -304,10 +303,7 @@ const void* conf_ptr[RULE_TTL+1] =
       add_entry(e);
 
       address_t next_address = get_address_from_array(&(p->payload[next]));
-      //p->header.nxh = next_address;
-      p->header.nxh.u8[1] = next_address.u8[0];
-      p->header.nxh.u8[0] = next_address.u8[1];
-      
+      p->header.nxh = next_address;    
       p->header.dst = next_address;
       rf_unicast_send(p);
     }
