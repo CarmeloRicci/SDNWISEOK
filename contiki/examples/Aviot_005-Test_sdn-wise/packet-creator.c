@@ -170,13 +170,13 @@ create_reg_proxy(void)
 void
 create_and_send_request(packet_t* p)
 {
-  PRINTF("packet.c --- create_and_send_request - Inizio\n");
+  //PRINTF("packet.c --- create_and_send_request - Inizio\n");
   uint8_t i = 0;    
     
   if (p->header.len < MAX_PAYLOAD_LENGTH){  
     packet_t* r = create_packet_empty();
     if (r != NULL){
-      PRINTF("packet.c --- create_and_send_request - Ho già il pacchetto\n");
+      //PRINTF("packet.c --- create_and_send_request - Ho già il pacchetto\n");
       r->header.net = conf.my_net;
       r->header.dst = conf.sink_address;
       r->header.src = conf.my_address; 
@@ -191,12 +191,12 @@ create_and_send_request(packet_t* p)
         set_payload_at(r, i+3, a[i]);
       }
     rf_unicast_send(r);
-    PRINTF("packet.c --- create_and_send_request - Mando in unicast\n");
+    //PRINTF("packet.c --- create_and_send_request - Mando in unicast\n");
     conf.requests_count++;
 
     }
   } else {   
-    PRINTF("packet.c --- create_and_send_request - Non ho già il pacchetto\n");
+    //PRINTF("packet.c --- create_and_send_request - Non ho già il pacchetto\n");
     packet_t* r1 = create_packet_empty();
     packet_t* r2 = create_packet_empty();
     
@@ -231,10 +231,10 @@ create_and_send_request(packet_t* p)
       }
 
       rf_unicast_send(r1);
-      PRINTF("packet.c --- create_and_send_request - Mando 1/2 pacchetti in unicast\n");
+      //PRINTF("packet.c --- create_and_send_request - Mando 1/2 pacchetti in unicast\n");
       rf_unicast_send(r2);
 
-      PRINTF("packet.c --- create_and_send_request - Mando 2/2 pacchetti in unicast\n");
+      //PRINTF("packet.c --- create_and_send_request - Mando 2/2 pacchetti in unicast\n");
       conf.requests_count++;
     } else {
       if (r1 == NULL){
