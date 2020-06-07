@@ -271,8 +271,11 @@ const void* conf_ptr[RULE_TTL+1] =
       match_packet(p);
     } else {
 
+    printf("my_position = %d \n",my_position);
+
     if (my_position > 0) // non sono il primo
     { 
+      printf("Sono quiiiii my_position > 0 !!!!!!!!!!!!! \n");
       uint8_t prev = my_index - ADDRESS_LENGTH;
       uint8_t first = start;
       entry_t* e = create_entry();
@@ -299,7 +302,7 @@ const void* conf_ptr[RULE_TTL+1] =
    
     if (my_position < path_len-1) // non sono il ultimo
     { 
-      printf("Sono quiiiii!!!!!!!!!!!!!\n");
+      printf("Sono quiiiii my_position < path_len-1 !!!!!!!!!!!!! \n");
       uint8_t next = my_index + ADDRESS_LENGTH;
       uint8_t last = end - ADDRESS_LENGTH;
       entry_t* e = create_entry();
@@ -330,6 +333,8 @@ const void* conf_ptr[RULE_TTL+1] =
     }
 
     if (my_position == path_len-1){
+      printf("Sono quiiiii my_position == path_len-1 !!!!!!!!!!!!! \n");
+
       packet_deallocate(p);
     }
   }
