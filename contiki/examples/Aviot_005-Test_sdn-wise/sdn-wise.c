@@ -220,8 +220,6 @@ int uart_rx_callback(unsigned char c)
 
 
       packet_t *p = create_data_MELO1(1,50, 48, 48, (48+NNode2));
-      match_packet(p);
-      rf_unicast_send(p);
       NNode2++;
       //packet_deallocate(p);
 
@@ -235,7 +233,7 @@ int uart_rx_callback(unsigned char c)
     //     match_packet(p);
     //     rf_unicast_send(p);
     //     //print_packet_MELO(p);
-    //     //process_post(&main_proc, UART_RECEIVE_EVENT, (process_data_t)p);
+        process_post(&main_proc, UART_RECEIVE_EVENT, (process_data_t)p);
     // //}
   }
 
