@@ -532,9 +532,6 @@ PROCESS_THREAD(packet_handler_proc, ev, data)
     PRINTF("[RX ]: ");
     print_packet(p);
     PRINTF("\n");
-    #if SINK
-    //print_packet_MELO(p);
-    #endif
     handle_packet(p);
   }
   PROCESS_END();
