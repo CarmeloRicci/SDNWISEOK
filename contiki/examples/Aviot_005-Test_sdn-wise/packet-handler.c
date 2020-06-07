@@ -139,6 +139,11 @@ const void* conf_ptr[RULE_TTL+1] =
             handle_config(p);
             break;
 
+            case DATAMELO:
+            PRINTF("[PHD]: DATAMELO\n");
+            handle_DATAMELO(p);
+            break;
+
             default:
             PRINTF("[PHD]: Request/Report\n");
             handle_report(p);
@@ -191,6 +196,21 @@ const void* conf_ptr[RULE_TTL+1] =
         #endif
       #endif
       packet_deallocate(p);
+    } else {
+      match_packet(p);
+    }
+  }
+  /*----------------------------------------------------------------------------*/
+  void handle_DATAMELO(packet_t* p) {
+
+    if (is_my_address(&(p->header.dst)))
+    {     
+        #if SINK
+          print_packet_uart(p);
+        #endif
+
+    packet_deallocate(p);
+
     } else {
       match_packet(p);
     }
