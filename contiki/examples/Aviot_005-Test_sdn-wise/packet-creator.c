@@ -302,8 +302,8 @@ create_config(void)
           p->header.net = conf.my_net;
           p->header.dst = get_address_from_int(addressdest); // Replace 1 with your dst
           p->header.src = conf.my_address;
-          p->header.typ = DATA;
-          p->header.nxh = conf.nxh_vs_sink;
+          p->header.typ = DATAMELO;
+          p->header.nxh = conf.my_address;
           
           set_payload_at(p, 0, 83);
           set_payload_at(p, 1, 111);
