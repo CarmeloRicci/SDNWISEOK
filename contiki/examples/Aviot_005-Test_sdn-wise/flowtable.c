@@ -518,10 +518,10 @@
     PRINTF("[FLT]: Matching Packet...\n");
 
     for(e = list_head(flowtable); e != NULL; e = e->next) {
-      PRINTF("flowtable.c --- match_packet - Sono nel for\n");
+      //PRINTF("flowtable.c --- match_packet - Sono nel for\n");
       found = match_entry(p,e);
       if (found){
-        PRINTF("flowtable.c --- match_packet - Regola Trovata!!!!\n");
+        //PRINTF("flowtable.c --- match_packet - Regola Trovata!!!!\n");
         break;
       }
     }

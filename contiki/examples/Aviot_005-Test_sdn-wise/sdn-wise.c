@@ -213,8 +213,8 @@ int uart_rx_callback(unsigned char c)
     uart_buffer_index++;
     //printf("[[[ %d ]]]\n", uart_buffer_index);
     if (uart_buffer_index == 80) {
-      count++;
-      printf("\nHO RICEVUTO LA FRAME N: %d\n",count);
+      //count++;
+      //printf("\nHO RICEVUTO LA FRAME N: %d\n",count);
       uart_buffer_index = 0;
       
 
