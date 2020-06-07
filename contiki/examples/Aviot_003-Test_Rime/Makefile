@@ -1,0 +1,11 @@
+CONTIKI_PROJECT = Tesi_new
+all: $(CONTIKI_PROJECT)
+
+#CONTIKI_WITH_RIME = 1
+
+CONTIKI_WITH_RIME = 1
+CFLAGS += -DUIP_CONF_ND6_SEND_NS=1
+
+
+CONTIKI = ../..
+include $(CONTIKI)/Makefile.include
